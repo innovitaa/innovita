@@ -22,7 +22,8 @@ body{
     color:white;
 }
 
-/* شاشة الدخول السينمائية */
+/* ================= INTRO CINEMATIC ================= */
+
 .intro{
     position:fixed;
     width:100%;
@@ -32,29 +33,84 @@ body{
     justify-content:center;
     align-items:center;
     z-index:999;
-    animation:introFade 4s forwards;
+    overflow:hidden;
+    animation:introFade 6s forwards;
 }
 
-.intro h1{
+.intro::before{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:radial-gradient(circle, rgba(212,175,55,0.08), transparent 60%);
+    animation:rotateSmoke 20s linear infinite;
+}
+
+@keyframes rotateSmoke{
+    from{transform:rotate(0deg);}
+    to{transform:rotate(360deg);}
+}
+
+.intro-content{
+    text-align:center;
+    position:relative;
+}
+
+.cinematic-title{
     font-family:'Cinzel',serif;
-    font-size:40px;
+    font-size:55px;
+    letter-spacing:8px;
+}
+
+.cinematic-title span{
+    opacity:0;
     color:#d4af37;
-    letter-spacing:4px;
-    animation: glow 2s infinite alternate;
+    display:inline-block;
+    transform:translateY(40px);
+    animation:letterReveal 0.6s forwards;
+}
+
+.cinematic-title span:nth-child(1){animation-delay:0.2s;}
+.cinematic-title span:nth-child(2){animation-delay:0.4s;}
+.cinematic-title span:nth-child(3){animation-delay:0.6s;}
+.cinematic-title span:nth-child(4){animation-delay:0.8s;}
+.cinematic-title span:nth-child(5){animation-delay:1s;}
+.cinematic-title span:nth-child(6){animation-delay:1.2s;}
+.cinematic-title span:nth-child(7){animation-delay:1.4s;}
+.cinematic-title span:nth-child(8){animation-delay:1.6s;}
+
+@keyframes letterReveal{
+    to{
+        opacity:1;
+        transform:translateY(0);
+        text-shadow:0 0 20px #d4af37;
+    }
+}
+
+.gold-line{
+    width:0;
+    height:2px;
+    background:linear-gradient(90deg,transparent,#d4af37,transparent);
+    margin:20px auto 0;
+    animation:lineExpand 1.5s 2s forwards;
+}
+
+@keyframes lineExpand{
+    to{width:300px;}
 }
 
 @keyframes introFade{
     0%{opacity:1;}
-    80%{opacity:1;}
-    100%{opacity:0;visibility:hidden;}
+    85%{opacity:1;}
+    100%{
+        opacity:0;
+        visibility:hidden;
+        transform:scale(1.1);
+    }
 }
 
-@keyframes glow{
-    from{text-shadow:0 0 10px #d4af37;}
-    to{text-shadow:0 0 30px #f5e6a8;}
-}
+/* ================= MAIN CONTAINER ================= */
 
-/* خلفية دخان */
 body::before{
     content:"";
     position:absolute;
@@ -71,30 +127,42 @@ body::before{
 
 .container{
     width:420px;
-    padding:45px;
+    padding:60px 45px 45px 45px;
     border-radius:25px;
-    background: rgba(0,0,0,0.85);
-    box-shadow:0 0 50px rgba(212,175,55,0.5);
+    background: rgba(0,0,0,0.88);
+    box-shadow:0 0 60px rgba(212,175,55,0.6);
     text-align:center;
     opacity:0;
     transform:translateY(40px);
-    animation: reveal 3s 3.5s forwards;
+    animation: reveal 3s 5.5s forwards;
+    position:relative;
 }
 
 @keyframes reveal{
     to{opacity:1; transform:translateY(0);}
 }
 
-.logo{
+/* ===== LOGO ===== */
+
+.logo-wrapper{
+    position:absolute;
+    top:-60px;
+    left:50%;
+    transform:translateX(-50%);
     width:120px;
-    margin-bottom:15px;
-    animation: float 4s ease-in-out infinite;
+    height:120px;
+    border-radius:50%;
+    background:linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
+    padding:4px;
+    box-shadow:0 0 30px #d4af37;
 }
 
-@keyframes float{
-    0%{transform:translateY(0);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0);}
+.logo{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+    object-fit:cover;
+    background:black;
 }
 
 h1{
@@ -103,12 +171,14 @@ h1{
     background: linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
+    margin-top:60px;
     margin-bottom:10px;
 }
 
 .subtitle{
     color:#d4af37;
     margin-bottom:25px;
+    letter-spacing:1px;
 }
 
 .links a{
@@ -169,24 +239,31 @@ h1{
 <body>
 
 <div class="intro">
-    <h1>INNOVITA CLUB</h1>
+    <div class="intro-content">
+        <h1 class="cinematic-title">
+            <span>I</span><span>N</span><span>N</span><span>O</span><span>V</span><span>I</span><span>T</span><span>A</span>
+        </h1>
+        <div class="gold-line"></div>
+    </div>
 </div>
 
 <div class="container">
 
-<img src="logo.png" class="logo" alt="Innovita Logo">
+<div class="logo-wrapper">
+    <img src="logo.png" class="logo" alt="Innovita Logo">
+</div>
 
 <h1>INNOVITA</h1>
-<div class="subtitle">Elite Scientific Society</div>
+<div class="subtitle">Welcome to the Family</div>
 
 <div class="links">
-    <a href="https://instagram.com/yourpage" target="_blank">
+    <a href="https://www.instagram.com/innovita_club?igsh=cXZsMWc0M3R4Z2dw&utm_source=qr" target="_blank">
         <i class="fab fa-instagram"></i> Instagram
     </a>
-    <a href="https://facebook.com/yourpage" target="_blank">
+    <a href="https://www.facebook.com/share/1FkPWVGFao/?mibextid=wwXIfr" target="_blank">
         <i class="fab fa-facebook"></i> Facebook
     </a>
-    <a href="https://tiktok.com/@yourpage" target="_blank">
+    <a href="https://www.tiktok.com/@innovita.club?_r=1&_t=ZS-94Ob5x9ZDKk" target="_blank">
         <i class="fab fa-tiktok"></i> TikTok
     </a>
 </div>
@@ -201,7 +278,7 @@ h1{
 </div>
 
 <div class="elite">
-⚜ INNOVATE• CREATE • CONNECT⚜
+⚜ INNOVATE • CREATE • CONNECT ⚜
 </div>
 
 </div>
