@@ -12,13 +12,17 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 
 body{
+    height:100vh;
     background:black;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
     font-family:'Poppins',sans-serif;
     color:white;
-    text-align:center;
 }
 
-/* ===== العرض السينمائي ===== */
+/* INTRO */
 
 .intro{
     position:fixed;
@@ -29,13 +33,13 @@ body{
     justify-content:center;
     align-items:center;
     z-index:999;
-    animation:introFade 4.5s forwards;
+    animation:introFade 6s forwards;
 }
 
 .cinematic-title{
     font-family:'Cinzel',serif;
-    font-size:50px;
-    letter-spacing:6px;
+    font-size:55px;
+    letter-spacing:8px;
 }
 
 .cinematic-title span{
@@ -43,8 +47,7 @@ body{
     color:#d4af37;
     display:inline-block;
     transform:translateY(40px);
-    filter:blur(8px);
-    animation:letterReveal 1.2s forwards;
+    animation:letterReveal 0.6s forwards;
 }
 
 .cinematic-title span:nth-child(1){animation-delay:0.2s;}
@@ -56,159 +59,141 @@ body{
 .cinematic-title span:nth-child(7){animation-delay:1.4s;}
 .cinematic-title span:nth-child(8){animation-delay:1.6s;}
 
-/* ظهور ضبابي ثم واضح */
 @keyframes letterReveal{
-    0%{
-        opacity:0;
-        transform:translateY(40px);
-        filter:blur(8px);
-    }
-    50%{
+    to{
         opacity:1;
         transform:translateY(0);
-        filter:blur(0);
         text-shadow:0 0 20px #d4af37;
-    }
-    100%{
-        opacity:1;
-        filter:blur(0);
-        text-shadow:0 0 25px #d4af37;
     }
 }
 
-/* بقاء العرض ثم الخروج */
 @keyframes introFade{
     0%{opacity:1;}
-    65%{opacity:1;}
+    85%{opacity:1;}
     100%{opacity:0;visibility:hidden;}
 }
 
-/* ===== الصفحة الرئيسية ===== */
+/* MAIN */
 
 .container{
-    width:100%;
-    max-width:500px;
-    margin:50px auto 0;
-    padding:0 20px;
+    width:420px;
+    padding:60px 45px 45px;
+    border-radius:25px;
+    background: rgba(0,0,0,0.88);
+    box-shadow:0 0 60px rgba(212,175,55,0.6);
+    text-align:center;
+    opacity:0;
+    transform:translateY(40px);
+    animation: reveal 3s 5.5s forwards;
+    position:relative;
 }
 
-/* اللوغو */
+@keyframes reveal{to{opacity:1; transform:translateY(0);}}
+
+/* LOGO بدون تضليل */
+
 .logo{
-    width:180px;
-    height:auto;
-    animation: letterReveal 1.5s ease-out forwards;
+    width:120px;
+    margin-bottom:15px;
 }
 
-/* العنوان */
+/* TEXT */
+
 h1{
     font-family:'Cinzel',serif;
-    font-size:34px;
-    letter-spacing:3px;
-    text-transform:uppercase;
+    font-size:32px;
     background: linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
     margin-bottom:10px;
-    animation: letterReveal 1.2s ease-out forwards;
 }
 
-/* النص الفرعي */
 .subtitle{
     color:#d4af37;
     margin-bottom:25px;
-    animation: letterReveal 1.6s ease-out forwards;
 }
 
-/* الروابط */
+/* LINKS */
+
 .links a{
     display:flex;
     justify-content:center;
     align-items:center;
     gap:10px;
-    margin:12px auto;
-    padding:16px;
-    border-radius:14px;
+    margin:12px 0;
+    padding:12px;
+    border-radius:15px;
     text-decoration:none;
     font-weight:500;
     color:#d4af37;
     border:1px solid #d4af37;
-    max-width:350px;
-    transition:0.3s;
-    animation: fadeUp 1s ease-out forwards;
+    transition:0.4s;
 }
-
-.links a:nth-child(1){animation-delay:1.8s;}
-.links a:nth-child(2){animation-delay:2s;}
-.links a:nth-child(3){animation-delay:2.2s;}
-.links a:nth-child(4){animation-delay:2.4s;}
 
 .links a:hover{
     background:#d4af37;
     color:black;
-    transform:scale(1.05);
+    transform:scale(1.08);
+    box-shadow:0 0 20px #d4af37;
 }
 
-/* زر الانضمام */
+/* JOIN BUTTON */
+
 .join-btn{
     margin-top:20px;
     font-weight:bold;
-    letter-spacing:1px;
     border:none !important;
     color:black !important;
     background:linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
+    box-shadow:0 0 25px rgba(212,175,55,0.8);
 }
 
-/* زر عائم */
+.join-btn:hover{
+    transform:scale(1.1);
+}
+
+/* CONTACT */
+
+.contact-title{
+    margin-top:25px;
+    font-size:15px;
+    color:#d4af37;
+    letter-spacing:1px;
+}
+
+.phone{
+    margin-top:10px;
+    font-size:14px;
+}
+
+.phone a{
+    color:white;
+    text-decoration:none;
+}
+
+.phone a:hover{
+    color:#d4af37;
+}
+
+/* FLOATING BUTTON */
+
 .floating-join{
     position:fixed;
-    bottom:20px;
-    right:20px;
+    bottom:25px;
+    right:25px;
     background:linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
     color:black;
-    padding:14px 22px;
+    padding:14px 20px;
     border-radius:50px;
     font-weight:bold;
     text-decoration:none;
     box-shadow:0 0 25px #d4af37;
-}
-
-/* تأثيرات إضافية */
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(30px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-/* متجاوب للهاتف */
-@media (max-width:600px){
-    .cinematic-title{
-        font-size:38px;
-    }
-    .logo{
-        width:150px;
-    }
-    h1{
-        font-size:28px;
-    }
-    .links a{
-        max-width:100%;
-        padding:14px;
-    }
-    .floating-join{
-        padding:12px 18px;
-    }
 }
 </style>
 </head>
 
 <body>
 
-<!-- العرض السينمائي -->
 <div class="intro">
     <h1 class="cinematic-title">
         <span>I</span><span>N</span><span>N</span><span>O</span><span>V</span><span>I</span><span>T</span><span>A</span>
@@ -217,25 +202,35 @@ h1{
 
 <div class="container">
 
-    <img src="logo.png" class="logo" alt="Innovita Logo">
+<img src="logo.png" class="logo" alt="Innovita Logo">
 
-    <h1>INNOVITA CLUB</h1>
-    <div class="subtitle">Welcome to the Family</div>
+<h1>INNOVITA</h1>
+<div class="subtitle">Welcome to the Family</div>
 
-    <div class="links">
-        <a href="https://www.instagram.com/innovita_club" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-        <a href="https://www.facebook.com/share/1FkPWVGFao/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-        <a href="https://www.tiktok.com/@innovita.club" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+<div class="links">
+    <a href="https://www.instagram.com/innovita_club" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    <a href="https://www.facebook.com/share/1FkPWVGFao/?mibextid=wwXIfr" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    <a href="https://www.tiktok.com/@innovita.club" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
 
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXuouzcJmqzHNY-OibNv8-qlNbKsp0HGSDMkFx7u-2_8rDtg/viewform"
-           target="_blank"
-           class="join-btn">
-           ⚜ انضم إلينا من هنا ⚜
-        </a>
-    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfXuouzcJmqzHNY-OibNv8-qlNbKsp0HGSDMkFx7u-2_8rDtg/viewform"
+       target="_blank"
+       class="join-btn">
+       ⚜ انضم إلينا من هنا ⚜
+    </a>
 </div>
 
-<a href="https://docs.google.com/forms/d/e/1FAIpQLSfXuouzcJmqzHNY-OibNv8-2_8rDtg/viewform"
+<div class="contact-title">
+اتصل بنا للمزيد من المعلومات
+</div>
+
+<div class="phone">
+📞 <a href="tel:+213559920007">+213559920007</a><br>
+📞 <a href="tel:+213562416138">+213562416138</a>
+</div>
+
+</div>
+
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSfXuouzcJmqzHNY-OibNv8-qlNbKsp0HGSDMkFx7u-2_8rDtg/viewform"
    target="_blank"
    class="floating-join">
    ⚜ Join Now
