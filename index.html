@@ -22,7 +22,7 @@ body{
     color:white;
 }
 
-/* ================= INTRO CINEMATIC ================= */
+/* ================= INTRO ================= */
 
 .intro{
     position:fixed;
@@ -50,8 +50,6 @@ body{
     from{transform:rotate(0deg);}
     to{transform:rotate(360deg);}
 }
-
-.intro-content{text-align:center;position:relative;}
 
 .cinematic-title{
     font-family:'Cinzel',serif;
@@ -118,7 +116,7 @@ body::before{
 
 .container{
     width:420px;
-    padding:60px 45px 45px;
+    padding:80px 45px 45px;
     border-radius:25px;
     background: rgba(0,0,0,0.88);
     box-shadow:0 0 60px rgba(212,175,55,0.6);
@@ -131,27 +129,28 @@ body::before{
 
 @keyframes reveal{to{opacity:1; transform:translateY(0);}}
 
-/* LOGO */
+/* ===== LOGO NORMAL ===== */
+
 .logo-wrapper{
     position:absolute;
-    top:-60px;
+    top:-55px;
     left:50%;
     transform:translateX(-50%);
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    background:linear-gradient(45deg,#d4af37,#f5e6a8,#d4af37);
-    padding:4px;
-    box-shadow:0 0 30px #d4af37;
+    padding:15px 30px;
+    background:rgba(0,0,0,0.95);
+    border:1px solid rgba(212,175,55,0.6);
+    border-radius:15px;
+    box-shadow:0 0 30px rgba(212,175,55,0.7);
 }
 
 .logo{
-    width:100%;
-    height:100%;
-    border-radius:50%;
-    object-fit:cover;
-    background:black;
+    width:170px;
+    height:auto;
+    display:block;
+    filter:drop-shadow(0 0 15px rgba(212,175,55,0.7));
 }
+
+/* TEXT */
 
 h1{
     font-family:'Cinzel',serif;
@@ -169,7 +168,8 @@ h1{
     letter-spacing:1px;
 }
 
-/* SOCIAL */
+/* LINKS */
+
 .links a{
     display:flex;
     justify-content:center;
@@ -192,7 +192,8 @@ h1{
     box-shadow:0 0 20px #d4af37;
 }
 
-/* JOIN BUTTON MAIN */
+/* JOIN BUTTON */
+
 .join-btn{
     margin-top:20px;
     position:relative;
@@ -235,6 +236,7 @@ h1{
 }
 
 /* FLOATING BUTTON */
+
 .floating-join{
     position:fixed;
     bottom:25px;
@@ -255,7 +257,7 @@ h1{
 <body>
 
 <div class="intro">
-    <div class="intro-content">
+    <div>
         <h1 class="cinematic-title">
             <span>I</span><span>N</span><span>N</span><span>O</span><span>V</span><span>I</span><span>T</span><span>A</span>
         </h1>
